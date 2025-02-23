@@ -111,7 +111,7 @@ def load_ckpt(args, isbest=False):
     print(filename)
     if os.path.isfile(filename):
         print("=> loading checkpoint '{}'".format(filename))
-        ckpt = torch.load(filename)
+        ckpt = torch.load(filename,weights_only=False)
     else:
         print("Checkpoint does not exist!")
         print("Checked path -- {}".format(filename))
@@ -136,7 +136,7 @@ def preprocess_cg(cg):
 
 def load_model(path):
     """Load a pytorch model."""
-    model = torch.load(path)
+    model = torch.load(path,weights_only=False)
     model.eval()
     if use_cuda:
         model.cuda()
